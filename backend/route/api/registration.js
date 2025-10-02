@@ -1,9 +1,8 @@
 const express = require('express')
+const registrationController = require('../../controller/registrationController')
+const secureAPI = require('../../middleWare/secureAPI')
 const router = express.Router()
+router.post('/',secureAPI,registrationController)
 
-router.post('/', (req, res) => {
-  console.log(req.body)
- res.send("i am called Abdirahman sever")
-})
 
 module.exports = router

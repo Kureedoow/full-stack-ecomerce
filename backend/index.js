@@ -1,13 +1,15 @@
+require('dotenv').config();
 const express = require('express')
 const cors = require('cors')
 const router = require('./route')
+const mongodbConfig = require('./mongodbConfig/mongodbConfig')
 const app = express()
 const port = 3000
+mongodbConfig()
 
+app.use(cors())
 app.use(express.json())
 app.use(router)
-app.use(cors())
-
 
 app.post('/registration',(req,res)=>{
 res.send(req.body)

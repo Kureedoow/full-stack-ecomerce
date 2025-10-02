@@ -4,14 +4,21 @@ import axios from 'axios';
 import Password from "antd/es/input/Password";
 const App = () => {
 
-const onFinish = values => {
-const Userdata = axios.post("http://localhost:3000/owner",{
-  username:values.username,
-  email:values.Email,
-  Password:values.password
-})
+const onFinish = async (values) => {
+const Userdata = await axios.post("http://localhost:3000/api/v1/authentication/registration",{
+ username: values.username,
+  email: values.email,
+  password: values.password
+},
+{
+  headers:{
 
+    authorization :"qwertyuuuioopp"
+  }
+}
+)
 console.log(Userdata);
+
 
   console.log('Success:', values);
 };
@@ -41,7 +48,7 @@ const onFinishFailed = errorInfo => {
 
     <Form.Item
       label="Email"
-      name="Email"
+      name="email"
       rules={[{ required: true, message: 'Please input your eamil!' }]}
     >
 
